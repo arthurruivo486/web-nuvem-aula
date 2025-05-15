@@ -3,27 +3,89 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Aplicação Web na Nuvem</title>
+  <title>Minha Primeira Aplicação</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
   <style>
-    body { font-family: Arial, sans-serif; margin: 2rem; background-color: #f5f5f5; }
-    header { background-color: #4CAF50; padding: 1rem; color: white; text-align: center; border-radius: 10px; }
-    main { margin-top: 2rem; background: white; padding: 2rem; border-radius: 10px; box-shadow: 0 0 10px rgba(0,0,0,0.1); }
-    button { background-color: #4CAF50; color: white; padding: 0.5rem 1rem; border: none; border-radius: 5px; cursor: pointer; }
+    body {
+      font-family: 'Roboto', sans-serif;
+      background: linear-gradient(to right, #6a11cb, #2575fc);
+      color: #fff;
+      margin: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      flex-direction: column;
+    }
+
+    header {
+      background-color: rgba(0, 0, 0, 0.2);
+      padding: 1.5rem 2rem;
+      border-radius: 12px;
+      margin-bottom: 2rem;
+      text-align: center;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 2rem;
+    }
+
+    main {
+      background-color: rgba(255, 255, 255, 0.1);
+      padding: 2rem;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+      text-align: center;
+      max-width: 500px;
+    }
+
+    button {
+      background-color: #ffffff;
+      color: #2575fc;
+      padding: 0.75rem 1.5rem;
+      border: none;
+      border-radius: 8px;
+      font-size: 1rem;
+      cursor: pointer;
+      font-weight: bold;
+      margin-top: 1rem;
+      transition: background 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #e0e0e0;
+    }
+
+    #mensagem {
+      margin-top: 1.5rem;
+      font-size: 1.1rem;
+      transition: all 0.3s ease-in-out;
+    }
   </style>
 </head>
 <body>
   <header>
-    <h1>Minha Primeira App Web em Nuvem</h1>
+    <h1>Minha Primeira Aplicação Web</h1>
   </header>
   <main>
-    <p>Essa é uma aplicação simples hospedada na nuvem. Clique no botão abaixo para interagir com o JavaScript:</p>
-    <button onclick="mostrarMensagem()">Clique aqui</button>
+    <p>Você está testando uma aplicação moderna e divertida na nuvem!</p>
+    <button onclick="mostrarCitação()">Me Inspire!</button>
     <p id="mensagem"></p>
   </main>
 
   <script>
-    function mostrarMensagem() {
-      document.getElementById("mensagem").innerText = "Aplicação funcionando com sucesso na nuvem!";
+    const citacoes = [
+      "O sucesso é a soma de pequenos esforços repetidos diariamente.",
+      "Acredite no poder da sua própria jornada.",
+      "Não espere por oportunidades, crie-as.",
+      "Você é mais forte do que imagina.",
+      "Cada passo te aproxima do seu objetivo."
+    ];
+
+    function mostrarCitação() {
+      const aleatoria = citacoes[Math.floor(Math.random() * citacoes.length)];
+      document.getElementById("mensagem").innerText = aleatoria;
     }
   </script>
 </body>
