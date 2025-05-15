@@ -5,76 +5,43 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Minha Primeira Aplicação</title>
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
   <style>
     body {
       font-family: 'Roboto', sans-serif;
-      background-color: #ffffff;
-      color: #000000;
-      margin: 0;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      height: 100vh;
-      flex-direction: column;
     }
-
-    header {
-      background-color: #000000;
-      color: #ffffff;
-      padding: 1.5rem 2rem;
-      border-radius: 10px;
-      margin-bottom: 2rem;
-      text-align: center;
+    .fade-in {
+      animation: fadeIn 0.6s ease-in-out forwards;
     }
-
-    header h1 {
-      margin: 0;
-      font-size: 2rem;
-    }
-
-    main {
-      background-color: #f0f0f0;
-      padding: 2rem;
-      border-radius: 12px;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-      text-align: center;
-      max-width: 500px;
-    }
-
-    button {
-      background-color: #ffffff;
-      color: #000000;
-      padding: 0.75rem 1.5rem;
-      border: 2px solid #000000;
-      border-radius: 8px;
-      font-size: 1rem;
-      cursor: pointer;
-      font-weight: bold;
-      margin-top: 1rem;
-      transition: background 0.3s ease, color 0.3s ease;
-    }
-
-    button:hover {
-      background-color: #000000;
-      color: #ffffff;
-    }
-
-    #mensagem {
-      margin-top: 1.5rem;
-      font-size: 1.1rem;
-      transition: all 0.3s ease-in-out;
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(10px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
   </style>
 </head>
-<body>
-  <header>
-    <h1>Minha Primeira Aplicação Web</h1>
-  </header>
-  <main>
-    <p>Você está testando uma aplicação moderna e minimalista na nuvem!</p>
-    <button onclick="mostrarCitação()">Me Inspire!</button>
-    <p id="mensagem"></p>
-  </main>
+
+<body class="bg-gradient-to-br from-gray-100 to-blue-100 text-gray-800 flex items-center justify-center min-h-screen p-4">
+  <div class="bg-white shadow-2xl rounded-2xl max-w-md w-full p-8 text-center space-y-6 animate-fade-in">
+    <header>
+      <h1 class="text-2xl font-bold text-gray-900">Minha Primeira Aplicação Web</h1>
+    </header>
+    <main>
+      <p class="text-gray-700">Você está testando uma aplicação moderna e minimalista na nuvem!</p>
+      <button 
+        onclick="mostrarCitação()" 
+        class="mt-4 bg-blue-600 text-white font-semibold px-6 py-2 rounded-lg hover:bg-blue-700 active:scale-95 transition-transform duration-200"
+      >
+        Me Inspire!
+      </button>
+      <p id="mensagem" class="mt-4 text-indigo-600 font-medium opacity-0 transition-opacity duration-500"></p>
+    </main>
+  </div>
 
   <script>
     const citacoes = [
@@ -87,9 +54,17 @@
 
     function mostrarCitação() {
       const aleatoria = citacoes[Math.floor(Math.random() * citacoes.length)];
-      document.getElementById("mensagem").innerText = aleatoria;
+      const mensagem = document.getElementById("mensagem");
+
+      mensagem.classList.remove("fade-in");
+      mensagem.style.opacity = 0;
+
+      setTimeout(() => {
+        mensagem.innerText = aleatoria;
+        mensagem.classList.add("fade-in");
+        mensagem.style.opacity = 1;
+      }, 100);
     }
   </script>
 </body>
 </html>
-
